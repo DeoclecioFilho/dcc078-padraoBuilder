@@ -7,11 +7,12 @@ class CarroBuilderTest {
 
 
     @Test
-    void deveRetornarExcecaoParaCarroSemModelo() {
+    void deveRetornarExcecaoParaCarroSemMotor() {
         try {
             CarroBuilder carroBuilder = new CarroBuilder();
             Carro carro = carroBuilder
                     .setModelo("Opala")
+                    .setPneu("225/200")
                     .build();
             fail();
         } catch (IllegalArgumentException e) {
@@ -20,7 +21,7 @@ class CarroBuilderTest {
     }
 
     @Test
-    void deveRetornarExcecaoParaMotorInvalido()  {
+    void deveRetornarExcecaoParaModeloInvalido()  {
         try {
             CarroBuilder carroBuilder = new CarroBuilder();
             Carro carro = carroBuilder
@@ -32,17 +33,15 @@ class CarroBuilderTest {
             assertEquals("Modelo inválido", e.getMessage());
         }
     }
-
-/*    @Test
-    void deveRetornarAlunoValido() {
-        AlunoBuilder alunoBuilder = new AlunoBuilder();
-        Aluno aluno = alunoBuilder
-                .setMatricula(1)
-                .setNome("Aluno 1")
-                .setEmail("aluno1@email.com")
+    @Test
+    void deveRetornarCarroValido(){
+        CarroBuilder carroBuilder = new CarroBuilder();
+        Carro carro = carroBuilder
+                .setModelo("Opala")
+                .setMotor(2)
+                .setPneu("225/200")
                 .build();
-
-        assertNotNull(aluno);
-    }*/
+        assertNotNull(carro);
+    }
 
 }
